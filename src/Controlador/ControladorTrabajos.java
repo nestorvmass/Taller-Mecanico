@@ -19,7 +19,7 @@ public class ControladorTrabajos implements ActionListener{
      /*vista perVista = new  vista ();
      usuarioDAO usDAO = new usuarioDAO ();
      Usuarios us= new Usuarios ();*/
-    
+    Vista perVista = new  Vista();
     VAumentarHoras Ahoras = new VAumentarHoras();
     
     
@@ -31,6 +31,8 @@ public class ControladorTrabajos implements ActionListener{
         perVista.listarProfesores.addActionListener(this);
         perVista.buscarModificar.addActionListener(this);
         perVista.modificar.addActionListener(this);*/
+        
+        Vista.Vi
          
     }
     @Override
