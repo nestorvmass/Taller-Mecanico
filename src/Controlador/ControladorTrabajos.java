@@ -32,7 +32,7 @@ public class ControladorTrabajos implements ActionListener{
         perVista.buscarModificar.addActionListener(this);
         perVista.modificar.addActionListener(this);*/
         
-        Vista.Vi
+        perVista.
          
     }
     @Override
