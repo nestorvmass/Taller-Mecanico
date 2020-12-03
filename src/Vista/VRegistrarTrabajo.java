@@ -211,6 +211,7 @@ public class VRegistrarTrabajo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     public javax.swing.JTextField TxtCodigo;
     public javax.swing.JButton batras;
     public javax.swing.JButton bregistrartrabajo;
