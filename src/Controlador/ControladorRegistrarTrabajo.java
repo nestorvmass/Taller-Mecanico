@@ -5,6 +5,11 @@
  */
 package Controlador;
 
+import Modelo.RLyP;
+import Modelo.RMecanica;
+import Modelo.Revision;
+import Modelo.Trabajo;
+import Modelo.TrabajoDao;
 import Vista.VRegistrarTrabajo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class ControladorRegistrarTrabajo implements ActionListener{
     VRegistrarTrabajo vista1;
+    TrabajoDao tDao = new TrabajoDao();
     
     public ControladorRegistrarTrabajo(VRegistrarTrabajo vista1){
         this.vista1 = vista1;
@@ -35,7 +41,14 @@ public class ControladorRegistrarTrabajo implements ActionListener{
                     && Double.parseDouble(vista1.txthoras.getText())>=0 
                     && !(vista1.listaOpciones.getSelectedIndex()==0) )
             {
-                System.out.println("Se valido");
+                CrearTrabajo(Integer.parseInt(vista1.TxtCodigo.getText()), vista1.txtdescripcion.getText(), vista1.listaOpciones.getSelectedItem().toString());
+
+                System.out.println("Formulario OK");
+                /*tDao.CrearTrabajo(4, "hola", "Revision");
+                System.out.println("codigo " +Integer.parseInt(vista1.TxtCodigo.getText()));
+                System.out.println("Desipcion "+vista1.txtdescripcion.getText());
+                System.out.println("Seleccion "+vista1.listaOpciones.getSelectedItem().toString());*/
+                
             }else{
                 JOptionPane.showMessageDialog(null, "importante que todos los campos esten bien diligenciados. "
                         + "Sigue las siguientes recomendaciones para que sepas donde estas fallando: \n"
@@ -47,4 +60,31 @@ public class ControladorRegistrarTrabajo implements ActionListener{
         }
     }
     
+    private Trabajo CrearTrabajo(int codigo, String descripcion, String tipoTrabajo){
+        Trabajo t;
+        Revision r = new Revision();
+        RLyP RL = new RLyP();
+        RMecanica RM = new RMecanica();
+        
+        if(tipoTrabajo=="REVISION"){
+            r.setId(codigo);
+            r.setDescripcion(descripcion);
+            r.setTipoTrabajo(tipoTrabajo);
+            t = r;
+        }else if(tipoTrabajo=="REPARACION MECANICA"){
+            RM.setId(codigo);
+            RM.setDescripcion(descripcion);
+            RM.setTipoTrabajo(tipoTrabajo);
+            t = RM;
+        }else{
+            RL.setId(codigo);
+            RL.setDescripcion(descripcion);
+            RL.setTipoTrabajo(tipoTrabajo);
+            t = RL;
+        }
+        
+        System.out.println("OBJETO DEVUELTO: "+t.toString());
+        
+        return t;
+    } 
 }

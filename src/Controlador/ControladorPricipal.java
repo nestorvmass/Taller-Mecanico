@@ -5,11 +5,13 @@
  */
 package Controlador;
 
+import Modelo.Trabajo;
 import Vista.VAumentarHoras;
 import Vista.VRegistrarTrabajo;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.Action;
 
 /**
@@ -20,7 +22,7 @@ public class ControladorPricipal implements ActionListener{
      /*vista perVista = new  vista ();
      usuarioDAO usDAO = new usuarioDAO ();
      Usuarios us= new Usuarios ();*/
-    
+    public ArrayList<Trabajo> trabajos = new ArrayList<Trabajo>();
     VAumentarHoras Ahoras = new VAumentarHoras();
     VRegistrarTrabajo vista1;
     ControladorRegistrarTrabajo control_1;
@@ -53,6 +55,7 @@ public class ControladorPricipal implements ActionListener{
             System.out.println("Ventana Registra Trabajo");
             control_1 = new ControladorRegistrarTrabajo(vista1);
             vista1.setVisible(true);
+            vista1.TxtCodigo.setText(String.valueOf(Trabajo.dameConsecutivo()));
             vista1.setLocationRelativeTo(null);
             vista1.setResizable(false);
         }else if(e.getSource()==pp.mAumentarHoras){

@@ -17,6 +17,24 @@ public abstract class Trabajo {
     protected String tipoTrabajo;
     protected static int consecutivo = 0;
     protected int estadoTrabajo;
+    protected int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getValorH() {
+        return valorH;
+    }
+
+    public void setValorH(double valorH) {
+        this.valorH = valorH;
+    }
+    protected double valorH = 50000;
 
     public String getTipoTrabajo() {
         return tipoTrabajo;
@@ -29,6 +47,10 @@ public abstract class Trabajo {
     
     public Trabajo(){
         
+    }
+    
+    public static int dameConsecutivo(){
+        return consecutivo;
     }
     
     
@@ -72,5 +94,13 @@ public abstract class Trabajo {
     }
     
     public abstract double CalcularTrabajo();
+
+    @Override
+    public String toString() {
+        return "Trabajo{" + "descripcion=" + descripcion + ", horasTrabajo=" + horasTrabajo + ", tipoTrabajo=" + tipoTrabajo + ", estadoTrabajo=" + estadoTrabajo + ", id=" + id + ", valorH=" + valorH + '}';
+    }
+    
+    
+    
     
 }

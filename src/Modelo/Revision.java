@@ -27,6 +27,11 @@ public class Revision extends Trabajo{
         return getPrecioFijo()+extra;
     }
 
+    @Override
+    public String toString() {
+        return "Revision{" + "precioFijo=" + precioFijo + ", extra=" + extra + '}';
+    }
+
     
     
     

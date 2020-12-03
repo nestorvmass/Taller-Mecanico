@@ -12,13 +12,19 @@ package Modelo;
 public class RLyP extends Reparacion{
 
     @Override
-    float calcularReparacion(float costoMaterial ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    double calcularReparacion(double costoMaterial ) {
+        interes = 1.3;
+        return costoMaterial*interes;
     }
 
     @Override
     public double CalcularTrabajo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getHorasTrabajo()*valorH+CalcularTrabajo();
+    }
+
+    @Override
+    public String toString() {
+        return "RLyP{" + '}';
     }
     
 }

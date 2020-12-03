@@ -10,11 +10,28 @@ package Modelo;
  * @author ness
  */
 public abstract class Reparacion extends Trabajo{
-    float precioFijo;
+    double precioFijo;
     double interes;
+    double PrecioMaterial;
+
+    public double getPrecioMaterial() {
+        return PrecioMaterial;
+    }
+
+    public void setPrecioMaterial(double PrecioMaterial) {
+        this.PrecioMaterial = PrecioMaterial;
+    }
+
+    public double getCostoReparacion() {
+        return CostoReparacion;
+    }
+
+    public void setCostoReparacion(double CostoReparacion) {
+        this.CostoReparacion = CostoReparacion;
+    }
     double CostoReparacion;
     
-    abstract float calcularReparacion(float costoMaterial );
+    abstract double calcularReparacion(double costoMaterial );
     
     
 }

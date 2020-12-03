@@ -23,8 +23,9 @@ public class RMecanica extends Reparacion{
     }
 
     @Override
-    float calcularReparacion(float costoMaterial) {
+    double calcularReparacion(double costoMaterial) {
         interes = 1.1;
+        
         return precioFijo+(costoMaterial*(float)interes);
     }
     
