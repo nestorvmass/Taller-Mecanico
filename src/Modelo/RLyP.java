@@ -10,5 +10,15 @@ package Modelo;
  * @author ness
  */
 public class RLyP extends Reparacion{
+
+    @Override
+    float calcularReparacion(float costoMaterial ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public double CalcularTrabajo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

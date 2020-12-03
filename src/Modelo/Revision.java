@@ -9,6 +9,27 @@ package Modelo;
  *
  * @author ness
  */
-public class Revision {
+public class Revision extends Trabajo{
+    float precioFijo = 250000;
+    float extra = 30000;
+    
+    public Revision(){
+        
+    }
+
+    public float getPrecioFijo() {
+        return precioFijo;
+    }
+
+    @Override
+    public double CalcularTrabajo() {
+        
+        return getPrecioFijo()+extra;
+    }
+
+    
+    
+    
+    
     
 }

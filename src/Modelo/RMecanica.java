@@ -9,6 +9,23 @@ package Modelo;
  *
  * @author ness
  */
-class RMecanica extends Reparacion{
+public class RMecanica extends Reparacion{
+    
+    public double getCostoReparacion(float costoMaterial) {
+        CostoReparacion = calcularReparacion(costoMaterial);
+        return CostoReparacion;
+    }
+
+    
+       @Override
+    public double CalcularTrabajo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    float calcularReparacion(float costoMaterial) {
+        interes = 1.1;
+        return precioFijo+(costoMaterial*(float)interes);
+    }
     
 }

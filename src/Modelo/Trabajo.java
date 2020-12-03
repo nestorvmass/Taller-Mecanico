@@ -14,8 +14,22 @@ import java.beans.DesignMode;
 public abstract class Trabajo {
     protected String descripcion;
     protected int horasTrabajo = 0;
+    protected String tipoTrabajo;
     protected static int consecutivo = 0;
     protected int estadoTrabajo;
+
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
+    }
+    
+    
+    public Trabajo(){
+        
+    }
     
     
     public double precioTrabajo(int horas){
@@ -39,14 +53,13 @@ public abstract class Trabajo {
         this.horasTrabajo = horasTrabajo;
     }
 
-    public static int getConsecutivo() {
-        int cons = consecutivo+1;
-        setConsecutivo(cons);
-        return cons;
+    public int getConsecutivo() {
+        return consecutivo;
     }
-
-    private static void setConsecutivo(int consecutivo) {
-        Trabajo.consecutivo = consecutivo;
+    
+    
+    public void setConsecutivo() {
+        consecutivo++;
     }
     
 
@@ -58,6 +71,6 @@ public abstract class Trabajo {
         this.estadoTrabajo = estadoTrabajo;
     }
     
-    
+    public abstract double CalcularTrabajo();
     
 }

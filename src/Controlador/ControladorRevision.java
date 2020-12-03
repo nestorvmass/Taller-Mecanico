@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controlador;
 
 /**
  *
  * @author ness
  */
-public abstract class Reparacion extends Trabajo{
-    float precioFijo;
-    double interes;
-    double CostoReparacion;
-    
-    abstract float calcularReparacion(float costoMaterial );
-    
+public class ControladorRevision {
     
 }
