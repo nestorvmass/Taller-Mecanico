@@ -24,8 +24,8 @@ public class ControladorRegistrarTrabajo implements ActionListener{
     TrabajoDao tDao = new TrabajoDao();
     //int consecutivo = 0;
     
-    public ControladorRegistrarTrabajo(VRegistrarTrabajo vista1){
-        this.vista1 = vista1;
+    public ControladorRegistrarTrabajo(VRegistrarTrabajo vista){
+        this.vista1 = vista;
         vista1.batras.addActionListener(this);
         vista1.bregistrartrabajo.addActionListener(this);
         vista1.listaOpciones.addActionListener(this);
@@ -40,7 +40,7 @@ public class ControladorRegistrarTrabajo implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vista1.batras){
             System.out.println("Boton Atras");
-            this.vista1.dispose();
+            this.vista1.setVisible(false);
         }else if(e.getSource()==vista1.bregistrartrabajo){
             System.out.println("Se ha aumentado el consecutivo a: "+ControladorPricipal.consecutivo);
             if(vista1.txtdescripcion.getText().trim().length()>=1 
@@ -75,6 +75,7 @@ public class ControladorRegistrarTrabajo implements ActionListener{
                 System.out.println("Estado trabajo: "+ t.getEstadoTrabajo());
                 System.out.println("Tipo Trabajo: "+t.getTipoTrabajo());
                 System.out.println("Estado trabajo: "+t.getEstadoTrabajo());
+                System.out.println("Descripcion trabajo : "+t.getDescripcion());
             }
         }
     }
@@ -109,6 +110,7 @@ public class ControladorRegistrarTrabajo implements ActionListener{
        
         return t;
     }
+    private 
     
     void limpiar(){
         

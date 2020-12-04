@@ -39,6 +39,23 @@ public class TrabajoDao {
         return false;
     }
     
+    public boolean AgregarHora(int codigo, int horas){
+        
+        for(Trabajo o: Principal.trabajos){
+            if(o.getId()==codigo){
+                //System.out.println("El codigo ya existe");
+                o.setHorasTrabajo(o.getHorasTrabajo()+horas);
+                return true;
+            }else{
+                //System.out.println("El codigo No existe");
+            }
+        }
+        
+        return false;
+    }
+    
+    
+    
     private boolean BuscarId(int codigo){
         System.out.println("BuscarId: Valor Codigo: "+codigo);  boolean resp = false;
         for(Trabajo o: Principal.trabajos){
@@ -51,6 +68,10 @@ public class TrabajoDao {
         }
         return false;
     }
+    
+    
+    
+    
     
     public Trabajo buscarTrabajo(int codigo){
         Trabajo t = null;

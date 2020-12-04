@@ -45,27 +45,18 @@ public class ControladorPricipal implements ActionListener{
         pp.mAumentarValorMaterial.addActionListener(this);
         pp.mMostrarTrabajo.addActionListener(this);
         pp.mFinalizarTrabajo.addActionListener(this);
-        /*
-        this.perVista = pv;
-        this.usDAO= pd;
-        perVista.addusuario.addActionListener(this);
-        perVista.listarEstudiantes.addActionListener(this);
-        perVista.listarProfesores.addActionListener(this);
-        perVista.buscarModificar.addActionListener(this);
-        perVista.modificar.addActionListener(this);*/
+        control_1 = new ControladorRegistrarTrabajo(vista1);
+        control_2 = new ControladorAumentarHora(vista2);
          
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==pp.mRegistrarTrabajo){
             System.out.println("Ventana Registra Trabajo");
-            control_1 = new ControladorRegistrarTrabajo(vista1);
             vista1.setVisible(true);
-            //vista1.TxtCodigo.setText("0");
             vista1.setLocationRelativeTo(null);
             vista1.setResizable(false);
         }else if(e.getSource()==pp.mAumentarHoras){
-            control_2 = new ControladorAumentarHora(vista2);
             vista2.setVisible(true);
             vista2.setLocationRelativeTo(null);
             vista2.setResizable(false);

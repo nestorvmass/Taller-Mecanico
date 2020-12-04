@@ -133,7 +133,6 @@ public class VAumentarHoras extends javax.swing.JFrame {
 
     private void batrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batrasActionPerformed
         // TODO add your handling code here:
-        dispose();
     }//GEN-LAST:event_batrasActionPerformed
 
     private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
