@@ -15,9 +15,12 @@ public abstract class Trabajo {
     protected String descripcion;
     protected int horasTrabajo = 0;
     protected String tipoTrabajo;
-    protected static int consecutivo = 0;
     protected int estadoTrabajo;
     protected int id;
+    protected static double PrecioTrbajo = 50000;
+
+    
+    //ID y Consecutivo
 
     public int getId() {
         return id;
@@ -26,39 +29,10 @@ public abstract class Trabajo {
     public void setId(int id) {
         this.id = id;
     }
-
-    public double getValorH() {
-        return valorH;
-    }
-
-    public void setValorH(double valorH) {
-        this.valorH = valorH;
-    }
-    protected double valorH = 50000;
-
-    public String getTipoTrabajo() {
-        return tipoTrabajo;
-    }
-
-    public void setTipoTrabajo(String tipoTrabajo) {
-        this.tipoTrabajo = tipoTrabajo;
-    }
     
     
-    public Trabajo(){
-        
-    }
-    
-    public static int dameConsecutivo(){
-        return consecutivo;
-    }
-    
-    
-    public double precioTrabajo(int horas){
-        double precio = 50000;
-        return horas*precio;
-    }
-
+ 
+    //2 Descripcion 
     public String getDescripcion() {
         return descripcion;
     }
@@ -66,7 +40,8 @@ public abstract class Trabajo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    
+    //3 Horas de trabajo
     public int getHorasTrabajo() {
         return horasTrabajo;
     }
@@ -74,17 +49,8 @@ public abstract class Trabajo {
     public void setHorasTrabajo(int horasTrabajo) {
         this.horasTrabajo = horasTrabajo;
     }
-
-    public int getConsecutivo() {
-        return consecutivo;
-    }
     
-    
-    public void setConsecutivo() {
-        consecutivo++;
-    }
-    
-
+    //4 Estado trabajo
     public int getEstadoTrabajo() {
         return estadoTrabajo;
     }
@@ -93,11 +59,46 @@ public abstract class Trabajo {
         this.estadoTrabajo = estadoTrabajo;
     }
     
+    // 5 tipo trabajo
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
+    }
+    // Precio trabajo
+
+    public double getPrecioTrbajo() {
+        return PrecioTrbajo;
+    }
+
+    public static void setPrecioTrbajo(double PrecioTrbajo) {
+        Trabajo.PrecioTrbajo = PrecioTrbajo;
+    }
+    
+    
+    
+
+    
+    /*
+    public double getValorH() {
+        return valorH;
+    }
+    
+    public void setValorH(double valorH) {
+        this.valorH = valorH;
+    }
+    protected double valorH = 50000;*/
+    
+    
+        
+    
     public abstract double CalcularTrabajo();
 
     @Override
     public String toString() {
-        return "Trabajo{" + "descripcion=" + descripcion + ", horasTrabajo=" + horasTrabajo + ", tipoTrabajo=" + tipoTrabajo + ", estadoTrabajo=" + estadoTrabajo + ", id=" + id + ", valorH=" + valorH + '}';
+        return "Trabajo{" + "descripcion=" + descripcion + ", horasTrabajo=" + horasTrabajo + ", tipoTrabajo=" + tipoTrabajo + ", estadoTrabajo=" + estadoTrabajo + ", id=" + id+'}';
     }
     
     

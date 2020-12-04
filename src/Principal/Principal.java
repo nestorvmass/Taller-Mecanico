@@ -41,8 +41,7 @@ public class Principal {
         TrabajoDao tDao = new TrabajoDao();
        trabajos.add(o);
         System.out.println(o.toString());*/
-        System.out.println("consecutivo: "+o.getConsecutivo());
-        System.out.println("consecutivo: "+o.getConsecutivo());
+
         System.out.println("Estado: "+ o.getEstadoTrabajo());
         System.out.println("Precio Fijo: "+o.CalcularTrabajo());
       

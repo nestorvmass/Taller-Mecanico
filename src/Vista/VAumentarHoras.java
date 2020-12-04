@@ -48,10 +48,20 @@ public class VAumentarHoras extends javax.swing.JFrame {
                 txthorasActionPerformed(evt);
             }
         });
+        txthoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txthorasKeyTyped(evt);
+            }
+        });
 
         txtcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodigoActionPerformed(evt);
+            }
+        });
+        txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcodigoKeyTyped(evt);
             }
         });
 
@@ -76,11 +86,12 @@ public class VAumentarHoras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(84, 84, 84)
-                                .addComponent(txthoras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txthoras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(145, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -88,20 +99,17 @@ public class VAumentarHoras extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bagregarhoras)
                 .addGap(25, 25, 25))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(157, 157, 157)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(182, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txthoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -110,11 +118,6 @@ public class VAumentarHoras extends javax.swing.JFrame {
                     .addComponent(batras)
                     .addComponent(bagregarhoras))
                 .addGap(21, 21, 21))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(70, 70, 70)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(210, Short.MAX_VALUE)))
         );
 
         pack();
@@ -132,6 +135,33 @@ public class VAumentarHoras extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_batrasActionPerformed
+
+    private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+
+      // Verificar si la tecla pulsada no es un digito
+      if(((caracter < '0') ||
+         (caracter > '9')) &&
+         (caracter != '\b' /*corresponde a BACK_SPACE*/))
+      {
+         evt.consume();  // ignorar el evento de teclado
+      }
+    
+    }//GEN-LAST:event_txtcodigoKeyTyped
+
+    private void txthorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthorasKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+
+      // Verificar si la tecla pulsada no es un digito
+      if(((caracter < '0') ||
+         (caracter > '9')) &&
+         (caracter != '\b' /*corresponde a BACK_SPACE*/))
+      {
+         evt.consume();  // ignorar el evento de teclado
+      }
+    }//GEN-LAST:event_txthorasKeyTyped
 
     /**
      * @param args the command line arguments
@@ -169,12 +199,12 @@ public class VAumentarHoras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bagregarhoras;
-    private javax.swing.JButton batras;
+    public javax.swing.JButton bagregarhoras;
+    public javax.swing.JButton batras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtcodigo;
-    private javax.swing.JTextField txthoras;
+    public javax.swing.JTextField txtcodigo;
+    public javax.swing.JTextField txthoras;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,10 +24,16 @@ public class ControladorPricipal implements ActionListener{
      Usuarios us= new Usuarios ();*/
     public ArrayList<Trabajo> trabajos = new ArrayList<Trabajo>();
     VAumentarHoras Ahoras = new VAumentarHoras();
+    //Variables
+    public static int consecutivo=0;
+    
+    //vistas
     VRegistrarTrabajo vista1;
     ControladorRegistrarTrabajo control_1;
+    ControladorAumentarHora control_2;
     Vista pp;
     VAumentarHoras vista2;
+  
     
     public ControladorPricipal(Vista vista, VRegistrarTrabajo VRegistrarTrabajo,VAumentarHoras VAumentarHoras) {
         this.pp = vista;
@@ -55,10 +61,11 @@ public class ControladorPricipal implements ActionListener{
             System.out.println("Ventana Registra Trabajo");
             control_1 = new ControladorRegistrarTrabajo(vista1);
             vista1.setVisible(true);
-            vista1.TxtCodigo.setText(String.valueOf(Trabajo.dameConsecutivo()));
+            //vista1.TxtCodigo.setText("0");
             vista1.setLocationRelativeTo(null);
             vista1.setResizable(false);
         }else if(e.getSource()==pp.mAumentarHoras){
+            control_2 = new ControladorAumentarHora(vista2);
             vista2.setVisible(true);
             vista2.setLocationRelativeTo(null);
             vista2.setResizable(false);

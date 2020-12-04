@@ -9,22 +9,20 @@ package Modelo;
  *
  * @author ness
  */
-public class RLyP extends Reparacion{
-
-    @Override
-    double calcularReparacion(double costoMaterial ) {
-        interes = 1.3;
-        return costoMaterial*interes;
-    }
-
+public class RLyP extends Trabajo implements Reparacion{
+    double precioMaterial;
+    
     @Override
     public double CalcularTrabajo() {
-        return this.getHorasTrabajo()*valorH+CalcularTrabajo();
+        
+        return horasTrabajo*PrecioTrbajo+calcularReparacion();
     }
 
     @Override
-    public String toString() {
-        return "RLyP{" + '}';
+    public double calcularReparacion() {
+        return precioFijoMantenimiento+(precioMaterial+1.3);
     }
+
+
     
 }

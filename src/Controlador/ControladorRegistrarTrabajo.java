@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class ControladorRegistrarTrabajo implements ActionListener{
     VRegistrarTrabajo vista1;
     TrabajoDao tDao = new TrabajoDao();
+    //int consecutivo = 0;
     
     public ControladorRegistrarTrabajo(VRegistrarTrabajo vista1){
         this.vista1 = vista1;
@@ -29,6 +30,10 @@ public class ControladorRegistrarTrabajo implements ActionListener{
         vista1.bregistrartrabajo.addActionListener(this);
         vista1.listaOpciones.addActionListener(this);
         //vista1.listaOpciones.addActionListener(this);
+        vista1.TxtCodigo.setText(String.valueOf(ControladorPricipal.consecutivo));
+        vista1.blistar.addActionListener(this);
+        vista1.txthoras.setText("0");
+        vista1.txthoras.setHorizontalAlignment(javax.swing.JTextField.CENTER);
     }
     
     @Override
@@ -37,17 +42,21 @@ public class ControladorRegistrarTrabajo implements ActionListener{
             System.out.println("Boton Atras");
             this.vista1.dispose();
         }else if(e.getSource()==vista1.bregistrartrabajo){
+            System.out.println("Se ha aumentado el consecutivo a: "+ControladorPricipal.consecutivo);
             if(vista1.txtdescripcion.getText().trim().length()>=1 
-                    && Double.parseDouble(vista1.txthoras.getText())>=0 
+                    && !vista1.txthoras.getText().isEmpty()
+                    && Double.parseDouble(vista1.txthoras.getText())>=0
                     && !(vista1.listaOpciones.getSelectedIndex()==0) )
             {
-                CrearTrabajo(Integer.parseInt(vista1.TxtCodigo.getText()), vista1.txtdescripcion.getText(), vista1.listaOpciones.getSelectedItem().toString());
-
-                System.out.println("Formulario OK");
-                /*tDao.CrearTrabajo(4, "hola", "Revision");
-                System.out.println("codigo " +Integer.parseInt(vista1.TxtCodigo.getText()));
-                System.out.println("Desipcion "+vista1.txtdescripcion.getText());
-                System.out.println("Seleccion "+vista1.listaOpciones.getSelectedItem().toString());*/
+                if( tDao.addTrabajo(CrearTrabajo(Integer.parseInt(vista1.TxtCodigo.getText()), vista1.txtdescripcion.getText(), vista1.listaOpciones.getSelectedItem().toString(), Integer.parseInt(vista1.txthoras.getText()))) ){
+                    ControladorPricipal.consecutivo++;
+                    vista1.TxtCodigo.setText(String.valueOf(ControladorPricipal.consecutivo));
+                    JOptionPane.showMessageDialog(null, "Agregado Existosamente");
+                    limpiar();
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se pudo Agregar porque ya existe");
+                }
                 
             }else{
                 JOptionPane.showMessageDialog(null, "importante que todos los campos esten bien diligenciados. "
@@ -57,10 +66,22 @@ public class ControladorRegistrarTrabajo implements ActionListener{
                         + "3. El campo de Descripcion no puede estar vacio o que solo tenga espacios. \n"
                         + "Intentalo de nuevo.");
             }
+        }else if(e.getSource()==vista1.blistar){
+            System.out.println("Boton listar");
+            for(Trabajo t: Principal.Principal.trabajos){
+                System.out.println("id: "+ t.getId());
+                System.out.println("Descripcion: "+t.getDescripcion());
+                System.out.println("Horas trabajo: "+ t.getHorasTrabajo());
+                System.out.println("Estado trabajo: "+ t.getEstadoTrabajo());
+                System.out.println("Tipo Trabajo: "+t.getTipoTrabajo());
+                System.out.println("Estado trabajo: "+t.getEstadoTrabajo());
+            }
         }
     }
     
-    private Trabajo CrearTrabajo(int codigo, String descripcion, String tipoTrabajo){
+    private Trabajo CrearTrabajo(int codigo, String descripcion, String tipoTrabajo, int horasTrabajo){
+        
+        System.out.println("Valor de codigo : "+codigo);
         Trabajo t;
         Revision r = new Revision();
         RLyP RL = new RLyP();
@@ -70,21 +91,29 @@ public class ControladorRegistrarTrabajo implements ActionListener{
             r.setId(codigo);
             r.setDescripcion(descripcion);
             r.setTipoTrabajo(tipoTrabajo);
+            r.setHorasTrabajo(horasTrabajo);
             t = r;
         }else if(tipoTrabajo=="REPARACION MECANICA"){
             RM.setId(codigo);
             RM.setDescripcion(descripcion);
             RM.setTipoTrabajo(tipoTrabajo);
+            RM.setHorasTrabajo(horasTrabajo);
             t = RM;
         }else{
             RL.setId(codigo);
             RL.setDescripcion(descripcion);
             RL.setTipoTrabajo(tipoTrabajo);
+            RL.setHorasTrabajo(horasTrabajo);
             t = RL;
         }
-        
-        System.out.println("OBJETO DEVUELTO: "+t.toString());
-        
+       
         return t;
-    } 
+    }
+    
+    void limpiar(){
+        
+        vista1.txthoras.setText("0");
+        vista1.txtdescripcion.setText("");
+        vista1.listaOpciones.setSelectedIndex(0);
+    }
 }
