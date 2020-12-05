@@ -30,6 +30,7 @@ public class ControladorResumenTrabjo implements ActionListener, Myhelper{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vista5.batras){
             System.out.println("Boton Atras");
+            limpiar();
             this.vista5.setVisible(false);
         }else if(e.getSource()==vista5.bresumentrabajo){
             Trabajo t = new Trabajo() {
@@ -40,12 +41,18 @@ public class ControladorResumenTrabjo implements ActionListener, Myhelper{
             };
             
             t = tdao.resumenTrabajo(Integer.parseInt(vista5.txtcodigo.getText()));
-            System.out.println("Tipo de trabajo : "+t.getTipoTrabajo());
             if(!(t.getTipoTrabajo()==null)){
+                 
                 vista5.txtDescripciontrabajo.setText(t.getDescripcion());
                 vista5.txtTipotrabajo.setText(t.getTipoTrabajo());
                 vista5.txthoras.setText(String.valueOf(t.getHorasTrabajo()));
                 vista5.txtCostoTrabajo.setText(String.valueOf(t.getPrecioTotal()));
+                if(t.getEstadoTrabajo()==0){
+                    vista5.txtEstadoTrabajo.setText("En progreso");
+                }else if(t.getEstadoTrabajo()==1){
+                    vista5.txtEstadoTrabajo.setText("Finalizado");
+
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Ups! al parecer no hay ningun trabajo con el codigo ingresado.");
                 limpiar();

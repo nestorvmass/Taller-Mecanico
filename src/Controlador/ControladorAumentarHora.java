@@ -33,6 +33,7 @@ public class ControladorAumentarHora implements ActionListener, Myhelper{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vista2.batras){
             System.out.println("Boton atras");
+            limpiar();
             this.vista2.dispose();
         }else if(e.getSource()==vista2.bagregarhoras){
             if(vista2.txtcodigo.getText().length()>0 && vista2.txthoras.getText().length()>0){

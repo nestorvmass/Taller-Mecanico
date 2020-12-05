@@ -40,6 +40,7 @@ public class ControladorRegistrarTrabajo implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vista1.batras){
             System.out.println("Boton Atras");
+            limpiar();
             this.vista1.setVisible(false);
         }else if(e.getSource()==vista1.bregistrartrabajo){
             System.out.println("Se ha aumentado el consecutivo a: "+ControladorPricipal.consecutivo);

@@ -31,6 +31,7 @@ public class ControladorMateriales implements ActionListener, Myhelper{
     public void actionPerformed(ActionEvent e) {
     if(e.getSource()==vista3.batras){
             System.out.println("Boton atras");
+            limpiar();
             this.vista3.dispose();
         }else if(e.getSource()==vista3.bagregamaterial){
             if(vista3.txtcodigo.getText().length()>0 && vista3.txtcostoMaterial.getText().length()>0){

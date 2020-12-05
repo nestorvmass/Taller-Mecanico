@@ -28,6 +28,7 @@ public class ControladorFinalizarTrabajo implements ActionListener, Myhelper{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vista4.bAtras){
             System.out.println("Boton atras");
+            limpiar();
             this.vista4.dispose();
         }else if(e.getSource()==vista4.bFinalizarTrabajo){
             if(vista4.txtcodigo.getText().length()>0){

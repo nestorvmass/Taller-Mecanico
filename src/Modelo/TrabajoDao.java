@@ -43,22 +43,28 @@ public class TrabajoDao {
         int resp = 1;
         if(Principal.trabajos.size()>=1){
             for(Trabajo o: Principal.trabajos){
+                System.out.println("*******************************");
+                System.out.println("Se validara el siguiente Objeto");
+                System.out.println("Codigo: "+o.getId());
+                System.out.println("Tipo trabajo: "+o.getTipoTrabajo());
+                
                 if(o.getId()==codigo){
                     if(o.getEstadoTrabajo()==0){
                         o.setHorasTrabajo(o.getHorasTrabajo()+horas);
-                        resp=0;
+                        
+                        return 0;
                     }else{
                         //Trabjo finalizado
-                     resp=3;   
+                     resp = 3;   
                     }
                 }else{
                   //No se encontro ningun registro
-                  resp=2;
+                  resp = 2;
                 }
             }
         }else{
             //no Hay datos
-            resp=1;
+            resp= 1;
         }
             
         
@@ -72,10 +78,10 @@ public class TrabajoDao {
                     if(o.getId()==codigo && !(o.getTipoTrabajo()=="REVISION") ){
                         if( o.getEstadoTrabajo()==0 ){
                             o.setPrecioTrbajo(o.getPrecioTrbajo()+material);
-                            resp=0;
+                            return 0;
                         }else{
                             //Trabajo ya finalizado
-                            resp=3;
+                            resp = 3;
                         }   
                     }else{
                         //Es una revision o no se encontro
@@ -92,14 +98,14 @@ public class TrabajoDao {
     }
     
     public int finalizarTrabajo(int codigo){
-        int resp=1;
+        int resp= 1;
         if(Principal.trabajos.size()>=1){
             for(Trabajo o: Principal.trabajos){
                 if(o.getId()==codigo){
                     if(o.estadoTrabajo==0){
                         o.setEstadoTrabajo(1);
                         o.setPrecioTotal(o.CalcularTrabajo());
-                        resp=0;
+                        return 0;
                     }else{
                         resp =3;
                     }
@@ -109,7 +115,7 @@ public class TrabajoDao {
                 }
             }
         }else{
-            resp= 1;
+            return 1;
         }
             
         
@@ -162,6 +168,7 @@ public class TrabajoDao {
                     t.setHorasTrabajo(o.getHorasTrabajo());
                     t.setDescripcion(o.getDescripcion());
                     t.setTipoTrabajo(o.getTipoTrabajo());
+                    t.setEstadoTrabajo(o.getEstadoTrabajo());
                     
                 }
             }
