@@ -10,9 +10,12 @@ package Modelo;
  * @author ness
  */
 public class Revision extends Trabajo{
-    float extra = 30000;
+    double extra = 30000;
     
-
+    public Revision(){
+        
+    }
+    
      @Override
     public double CalcularTrabajo() {
         

@@ -10,7 +10,23 @@ package Modelo;
  * @author ness
  */
 public class RLyP extends Trabajo implements Reparacion{
-    double precioMaterial;
+    double precioMaterial=0;
+    
+    public RLyP(){
+        
+    }
+
+    public double getPrecioMaterial() {
+        return precioMaterial;
+    }
+
+    public void setPrecioMaterial(double precioMaterial) {
+        this.precioMaterial = precioMaterial;
+    }
+    
+    
+    
+    
     
     @Override
     public double CalcularTrabajo() {
@@ -20,7 +36,7 @@ public class RLyP extends Trabajo implements Reparacion{
 
     @Override
     public double calcularReparacion() {
-        return precioFijoMantenimiento+(precioMaterial+1.3);
+        return precioFijoMantenimiento+(precioMaterial*1.3);
     }
 
 

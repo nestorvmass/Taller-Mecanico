@@ -28,22 +28,13 @@ public class Principal {
         Vista pantalla = new Vista();
         VRegistrarTrabajo vista1 = new VRegistrarTrabajo();
         VAumentarHoras vista2 = new VAumentarHoras();
-        ControladorPricipal controlGeneral = new ControladorPricipal(pantalla, vista1, vista2);
+        VAumentarMateriales vista3 = new VAumentarMateriales();
+        VFinalizarTrabajo vista4 = new VFinalizarTrabajo();
+        VResumenTrabajo vista5 = new VResumenTrabajo();
+        ControladorPricipal controlGeneral = new ControladorPricipal(pantalla, vista1, vista2, vista3, vista4, vista5);
         pantalla.setVisible(true);
-        Revision o = new Revision();
-        /*
-        o.setDescripcion("Hola como estas");
-        o.setHorasTrabajo(10);
-        //o.setConsecutivo();
-        o.setId(Trabajo.dameConsecutivo());
-        o.setConsecutivo();
-        o.getPrecioFijo();
-        TrabajoDao tDao = new TrabajoDao();
-       trabajos.add(o);
-        System.out.println(o.toString());*/
 
-        System.out.println("Estado: "+ o.getEstadoTrabajo());
-        System.out.println("Precio Fijo: "+o.CalcularTrabajo());
+
       
         
     }

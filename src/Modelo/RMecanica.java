@@ -10,7 +10,19 @@ package Modelo;
  * @author ness
  */
 public class RMecanica extends Trabajo implements Reparacion{
-    double precioMaterial;
+    double precioMaterial=0;
+     
+    public RMecanica(){
+        
+    }
+    
+    public double getPrecioMaterial() {
+        return precioMaterial;
+    }
+
+    public void setPrecioMaterial(double precioMaterial) {
+        this.precioMaterial = precioMaterial;
+    }
     
     
        @Override
@@ -21,7 +33,7 @@ public class RMecanica extends Trabajo implements Reparacion{
 
     @Override
     public double calcularReparacion() {
-        return precioFijoMantenimiento+(precioMaterial+1.1);
+        return precioFijoMantenimiento+(precioMaterial*1.1);
     }
     
 }

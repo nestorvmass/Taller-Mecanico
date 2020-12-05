@@ -19,7 +19,7 @@ import Vista.VAumentarHoras;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-public class ControladorAumentarHora implements ActionListener{
+public class ControladorAumentarHora implements ActionListener, Myhelper{
     
     VAumentarHoras vista2;
     TrabajoDao tDao = new TrabajoDao();
@@ -36,12 +36,19 @@ public class ControladorAumentarHora implements ActionListener{
             this.vista2.dispose();
         }else if(e.getSource()==vista2.bagregarhoras){
             if(vista2.txtcodigo.getText().length()>0 && vista2.txthoras.getText().length()>0){
-                if(tDao.AgregarHora(Integer.parseInt(vista2.txtcodigo.getText()),Integer.parseInt(vista2.txthoras.getText()))){
-                JOptionPane.showMessageDialog(null, "HORAS AGREGADAS EXITOSAMENTE");
+                int api = tDao.AgregarHora(Integer.parseInt(vista2.txtcodigo.getText()),Integer.parseInt(vista2.txthoras.getText()));
+                if(api==0){
+                JOptionPane.showMessageDialog(null, "Se ha agregado EXITOSAMENTE");
+                limpiar();
+                }else if(api==1){
+                    JOptionPane.showMessageDialog(null, "Debe crear por lo menos 1 trabajo para realizar esta operacion.");
+                }else if(api==2){
+                    JOptionPane.showMessageDialog(null, "El codigo no existe");
+                }else if(api==3){
+                    JOptionPane.showMessageDialog(null, "Imposible, el trabajo ya se encuenra finalizado.");
                 }
-                
             }else{
-                JOptionPane.showMessageDialog(null, "TODOS LOS CAMPSO SON OBLIGATORIOS");
+                JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS SON OBLIGATORIOS");
             }/*
             System.out.println("Agregar Horas");
             t = tDao.buscarTrabajo( Integer.parseInt(vista2.txtcodigo.getText() ));
@@ -52,6 +59,9 @@ public class ControladorAumentarHora implements ActionListener{
         }
         
     }
-    
-    
+    @Override
+    public void limpiar(){
+        vista2.txthoras.setText("");
+        vista2.txtcodigo.setText("");
+    }
 }

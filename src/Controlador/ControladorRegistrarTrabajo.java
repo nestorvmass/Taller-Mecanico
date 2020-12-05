@@ -76,6 +76,7 @@ public class ControladorRegistrarTrabajo implements ActionListener{
                 System.out.println("Tipo Trabajo: "+t.getTipoTrabajo());
                 System.out.println("Estado trabajo: "+t.getEstadoTrabajo());
                 System.out.println("Descripcion trabajo : "+t.getDescripcion());
+                System.out.println("Total trabajo : "+t.getPrecioTotal());
             }
         }
     }
@@ -110,12 +111,14 @@ public class ControladorRegistrarTrabajo implements ActionListener{
        
         return t;
     }
-    private 
-    
+    private
+
+
     void limpiar(){
-        
         vista1.txthoras.setText("0");
         vista1.txtdescripcion.setText("");
         vista1.listaOpciones.setSelectedIndex(0);
     }
+            
+    
 }

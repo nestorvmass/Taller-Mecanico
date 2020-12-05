@@ -18,6 +18,20 @@ public abstract class Trabajo {
     protected int estadoTrabajo;
     protected int id;
     protected static double PrecioTrbajo = 50000;
+    protected double precioTotal;
+    
+    
+    public Trabajo(){
+        
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
 
     
     //ID y Consecutivo

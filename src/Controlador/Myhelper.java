@@ -9,6 +9,7 @@ package Controlador;
  *
  * @author ness
  */
-public class ControladorRevision {
+public interface Myhelper {
+    abstract void limpiar();
     
 }
